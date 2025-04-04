@@ -1,0 +1,8 @@
+services:
+  - type: postgres
+    name: byronmass-db # Nombre de tu DB
+    plan: free # Plan gratuito
+    region: us-west # Región (ej: oregon)
+    # Opcional: Script SQL inicial
+    initScript: |
+      CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, name VARCHAR(100));

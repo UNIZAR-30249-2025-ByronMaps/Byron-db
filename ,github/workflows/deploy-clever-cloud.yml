@@ -1,0 +1,26 @@
+name: Deploy to Clever Cloud
+
+on:
+  push:
+    branches:
+      - main # o master, dependiendo de tu rama principal
+  workflow_dispatch: # Permite ejecutar el workflow manualmente desde la interfaz de GitHub
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Esto es importante para que Clever Cloud tenga acceso al historial completo
+
+      - name: Deploy to Clever Cloud
+        uses: 47ng/actions-clever-cloud@v2.0.0
+        env:
+          CLEVER_TOKEN: ${{ secrets.CLEVER_TOKEN }}
+          CLEVER_SECRET: ${{ secrets.CLEVER_SECRET }}
+          # El ID de tu aplicación en Clever Cloud
+          CLEVER_APP_ID: ${{ secrets.CLEVER_APP_ID }}
+          # Opcional: ID de tu organización en Clever Cloud (si la aplicación pertenece a una organización)
+          CLEVER_ORG_ID: ${{ secrets.CLEVER_ORG_ID }}
