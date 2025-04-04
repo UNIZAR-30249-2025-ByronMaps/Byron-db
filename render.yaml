@@ -1,5 +1,5 @@
 services:
-  - type: postgres
+  - type: postgresql
     name: byronmass-db # Nombre de tu DB
     plan: free # Plan gratuito
     region: us-west # Región (ej: oregon)
