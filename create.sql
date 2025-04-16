@@ -11,8 +11,7 @@ CREATE TABLE "persona" (
 
 -- Tabla espacio
 CREATE TABLE "espacio" (
-    "id" BIGINT PRIMARY KEY,
-    "identificador" VARCHAR(50) NOT NULL UNIQUE,
+    "identificador" VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY,
     "departamento" VARCHAR(255) NULL,
     "planta" INTEGER NOT NULL CHECK ("planta" >= 0),
     "num_max_ocupantes" INTEGER NOT NULL CHECK ("num_max_ocupantes" > 0),
@@ -26,7 +25,7 @@ CREATE TABLE "espacio" (
 CREATE TABLE "reserva" (
     "id" SERIAL PRIMARY KEY,
     "usuario_id" BIGINT NOT NULL,
-    "espacio_id" BIGINT NOT NULL,
+    "espacio_id" VARCHAR(50) NOT NULL,
     "date_inicio" TIMESTAMP NOT NULL,
     "date_fin" TIMESTAMP NOT NULL,
     "uso" VARCHAR(255) NOT NULL,
@@ -36,20 +35,21 @@ CREATE TABLE "reserva" (
         REFERENCES "persona" ("id") ON DELETE CASCADE,
 
     CONSTRAINT "fk_Reserva_Espacio" FOREIGN KEY ("espacio_id") 
-        REFERENCES "espacio" ("id") ON DELETE CASCADE,
+        REFERENCES "espacio" ("identificador") ON DELETE CASCADE,
 
     CHECK ("date_inicio" < "date_fin")
 );
 
 -- Tabla intervalos_reservas
 CREATE TABLE "intervalos_disponibles" (
-    "id" SERIAL PRIMARY KEY,
-    "espacio_id" BIGINT NOT NULL,
+    "espacio_id" VARCHAR(50) NOT NULL,
     "date_inicio" TIMESTAMP NOT NULL,
     "date_fin" TIMESTAMP NOT NULL,
 
-    CONSTRAINT "fk_Reserva_Espacio" FOREIGN KEY ("espacio_id") 
-        REFERENCES "espacio" ("id") ON DELETE CASCADE,
+    CONSTRAINT "fk_Intervalo_Espacio" FOREIGN KEY ("espacio_id") 
+        REFERENCES "espacio" ("identificador") ON DELETE CASCADE,
 
-    CHECK ("date_inicio" < "date_fin")
+    CHECK ("date_inicio" < "date_fin"),
+
+    PRIMARY KEY ("espacio_id", "date_inicio")
 );
