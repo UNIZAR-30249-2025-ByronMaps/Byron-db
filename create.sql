@@ -30,6 +30,7 @@ CREATE TABLE "reserva" (
     "date_fin" TIMESTAMP NOT NULL,
     "uso" VARCHAR(255) NOT NULL,
     "detalles_adicionales" TEXT NULL,
+    "num_asistentes" INTEGER NOT NULL,
 
     CONSTRAINT "fk_Reserva_Usuario" FOREIGN KEY ("usuario_id") 
         REFERENCES "persona" ("id") ON DELETE CASCADE,
