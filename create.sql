@@ -18,7 +18,8 @@ CREATE TABLE "espacio" (
     "porcentaje_ocupacion" INTEGER NOT NULL CHECK ("porcentaje_ocupacion" >= 0 AND "porcentaje_ocupacion" <= 100),
     "es_reservable" BOOLEAN NOT NULL,
     "categoria" VARCHAR(255) NOT NULL,
-    "categoria_de_reserva" VARCHAR(255) NOT NULL
+    "categoria_de_reserva" VARCHAR(255) NOT NULL,
+	"tam_espacio" FLOAT NOT NULL
 );
 
 -- Tabla reserva

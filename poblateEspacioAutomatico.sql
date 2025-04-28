@@ -7,16 +7,18 @@ INSERT INTO espacio (
     porcentaje_ocupacion,
     es_reservable,
     categoria,
-    categoria_de_reserva
+    categoria_de_reserva,
+	tam_espacio
 )
 SELECT
-    nombre AS identificador,
+    id_espacio AS identificador,
     NULL AS departamento,
-    aula AS planta,
+    CAST(altura AS INTEGER) AS planta,
     (FLOOR(RANDOM() * 51) + 50)::INTEGER AS num_max_ocupantes, -- Aleatorio entre 50 y 100
     (FLOOR(RANDOM() * 51) + 50)::INTEGER AS porcentaje_ocupacion, -- Aleatorio entre 50 y 100
     (RANDOM() < 0.5) AS es_reservable, -- Aleatoriamente true o false
     uso AS categoria,
-    NULL AS categoria_de_reserva
+    uso AS categoria_de_reserva,
+	superficie AS tam_espacio
 FROM
     ada;
