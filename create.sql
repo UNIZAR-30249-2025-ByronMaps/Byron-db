@@ -5,7 +5,8 @@ CREATE TABLE "persona" (
     "email" VARCHAR(255) NOT NULL UNIQUE CHECK ("email" ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
     "rol" VARCHAR(255) NOT NULL,
     "rol_secundario" VARCHAR(255) NULL,
-    "departamento" VARCHAR(255) NULL
+    "departamento" VARCHAR(255) NULL,
+	"password" VARCHAR(255) NOT NULL
 );
 
 
