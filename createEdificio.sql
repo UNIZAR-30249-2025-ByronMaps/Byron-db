@@ -1,0 +1,1 @@
+INSERT INTO "edificio" ("edificio_id", "porcentaje_ocupacion") VALUES ('Ada', 80);

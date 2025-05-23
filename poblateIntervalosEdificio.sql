@@ -1,7 +1,7 @@
-INSERT INTO intervalos_disponibles (
+INSERT INTO intervalos_edificio (
     espacio_id, 
     date_inicio, 
-    date_fin, 
+    date_fin,
     modificado
 )
 SELECT 
@@ -10,7 +10,7 @@ SELECT
     d.dia_fin,
     false  -- Valor fijo para el campo 'modificado'
 FROM 
-    espacio e
+    edificio e
 CROSS JOIN LATERAL (
     SELECT 
         generate_series(
