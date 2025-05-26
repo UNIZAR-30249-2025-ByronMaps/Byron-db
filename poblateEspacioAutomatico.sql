@@ -1,7 +1,6 @@
 
 INSERT INTO espacio (
     identificador,
-    departamento,
     planta,
     num_max_ocupantes,
     porcentaje_ocupacion,
@@ -15,7 +14,6 @@ INSERT INTO espacio (
 )
 SELECT
     id_espacio AS identificador,
-    NULL AS departamento,
     CAST(altura AS INTEGER) AS planta,
     (FLOOR(RANDOM() * 51) + 50)::INTEGER AS num_max_ocupantes, -- Aleatorio entre 50 y 100
     80 AS porcentaje_ocupacion,

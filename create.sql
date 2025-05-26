@@ -22,7 +22,6 @@ CREATE TABLE "edificio" (
 
 CREATE TABLE "espacio" (
     "identificador" VARCHAR(50) PRIMARY KEY,
-    "departamento" VARCHAR(255) NULL,
     "planta" INTEGER NOT NULL CHECK ("planta" >= 0),
     "num_max_ocupantes" INTEGER NOT NULL CHECK ("num_max_ocupantes" > 0),
     "porcentaje_ocupacion" INTEGER NOT NULL,
